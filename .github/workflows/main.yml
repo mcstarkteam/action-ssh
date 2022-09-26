@@ -1,12 +1,8 @@
-name: debugger-action
-on:
-  push:
-    branches:
-      - test
+name: Ubuntu
+on: [push]
 jobs:
-  build:
+  Ubuntu:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup Debug Session
-        uses: csexton/debugger-action@master
+    - name: Setup Debug Session
+      uses: csexton/debugger-action@master
