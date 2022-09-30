@@ -1,4 +1,4 @@
-name: CI
+name: build openssh
 on: [push]
 jobs:
   build:
