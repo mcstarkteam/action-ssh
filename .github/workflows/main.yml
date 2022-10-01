@@ -1,4 +1,4 @@
-name: build
+name: build ios4
 on: [push]
 jobs:
   build:
