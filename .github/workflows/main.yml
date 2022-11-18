@@ -1,19 +1,30 @@
-on: [push]
+name: Build
+
+on:
+  push:
+    branches: [ master ]
 
 jobs:
-  upload_files:
+
+  build:
+    name: Build
     runs-on: ubuntu-latest
-    name: Upload a builded file.
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2.3.4
-    - name: Upload Files
-      id: upload
-      uses: Creepios/sftp-action@v1.0.3
+
+    - name: Set up Go 1.14
+      uses: actions/setup-go@v1
       with:
-        host: '127.0.0.1'
-        port: 22
-        username: 'root'
-        password: 'password'
-        localPath: './dist/index.js'
-        remotePath: './'
+        go-version: 1.14
+
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v2
+
+    - uses: shaowenchen/debugger-action@v1
+      name: debugger
+      timeout-minutes: 1000
+      continue-on-error: true
+      with:
+        frp_server_addr: ${{ secrets.FRP_SERVER_ADDR }}
+        frp_server_port: ${{ secrets.FRP_SERVER_PORT }}
+        frp_token: ${{ secrets.FRP_TOKEN }}
+        ssh_port: ${{ secrets.SSH_PORT }}
