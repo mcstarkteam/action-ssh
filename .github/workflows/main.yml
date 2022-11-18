@@ -1,30 +1,6 @@
-name: Builds-should
-
-on:
-  push:
-    branches: [ master ]
-
-jobs:
-
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-
-    - name: Set up Go 1.14
-      uses: actions/setup-go@v1
-      with:
-        go-version: 1.14
-
-    - name: Check out code into the Go module directory
-      uses: actions/checkout@v2
-
-    - uses: shaowenchen/debugger-action@v1
-      name: debugger
-      timeout-minutes: 1000
-      continue-on-error: true
-      with:
-        frp_server_addr: ${{ secrets.FRP_SERVER_ADDR }}
-        frp_server_port: ${{ secrets.FRP_SERVER_PORT }}
-        frp_token: ${{ secrets.FRP_TOKEN }}
-        ssh_port: ${{ secrets.SSH_PORT }}
+- uses: shaowenchen/debugger-action@v2
+  name: debugger
+  timeout-minutes: 970
+  continue-on-error: true
+  with:
+    ngrok_token: ${{ secrets.NGROK_TOKEN }}
