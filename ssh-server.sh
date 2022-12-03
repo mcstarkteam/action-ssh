@@ -6,7 +6,7 @@ if [[ -z "$NGROK_TOKEN" ]]; then
 fi
 
 if [[ -z "$SSH_PASSWORD" ]]; then
-  echo "Please set 'SSH_PASSWORD' for user: $USER"
+  echo "Please set 'USER_PASS' for user: $USER"
   exit 3
 fi
 
