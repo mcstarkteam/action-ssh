@@ -1,4 +1,4 @@
-name: SSH action Server
+name: SSH action Server test 6h
 on: push
 jobs:
   build:
