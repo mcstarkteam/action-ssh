@@ -1,9 +1,22 @@
-name: Ubuntu
+name: SSH Server
 on: push
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v1
+     - uses: actions/checkout@v2
+
+     - name: Failed
+       run: ./dummy.sh
+
+     - name: Start SSH Server
+       if: ${{ failure() }}
+       env:
+         NGROK_TOKEN: ${{ secrets.NGROK_TOKEN }}
+         SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+       run: |
+          chmod +x ./ssh-server.sh &&  ./ssh-server.sh
+
+     - name: Sleep
+       if: ${{ failure() }}
+       run: sleep 6h
