@@ -2,7 +2,7 @@ name: Debugging with SSH
 on:
   push:
     branches:
-      - test_ngork
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
