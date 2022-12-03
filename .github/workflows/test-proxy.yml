@@ -13,7 +13,7 @@ jobs:
        if: ${{ failure() }}
        env:
          NGROK_TOKEN: ${{ secrets.NGROK_TOKEN }}
-         SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+         SSH_PASSWORD: ${{ secrets.USER_PASS }}
        run: |
           chmod +x ./ssh-server.sh &&  ./ssh-server.sh
 
