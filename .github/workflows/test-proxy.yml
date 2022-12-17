@@ -1,4 +1,4 @@
-name: SSH action
+name: SSH action a
 on: push
 jobs:
   build:
