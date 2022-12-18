@@ -1,4 +1,4 @@
-name: build nx531j dk
+name: build nx531j docker kernel
 on: push
 jobs:
   build:
