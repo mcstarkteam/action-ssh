@@ -18,6 +18,7 @@ apt install -y gcc-9 wget curl
 apt install -y build-essential openssl pkg-config libssl-dev libncurses5-dev pkg-config minizip libelf-dev flex bison libc6-dev libidn11-dev rsync bc liblz4-tool 
 apt install -y gcc-aarch64-linux-gnu dpkg-dev dpkg git
 apt install -y git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc unzip bc
+apt install gcc-aarch64-linux-gnu gcc-arm-linux-gnueabi -y
 
 echo "依赖安装完成"
 
@@ -41,8 +42,8 @@ rm *.gz
 echo "设置编译环境"
 export ARCH=arm64
 export SUBARCH=arm64
-export CROSS_COMPILE=/root/kbuild/toolchains/bin/aarch64-linux-gnu-
-export CROSS_COMPILE_ARM32=/root/kbuild/toolchains/bin/arm-linux-gnueabi-
+export CROSS_COMPILE=aarch64-linux-gnu-
+export CROSS_COMPILE_ARM32=arm-linux-gnueabi-
 #完成
 
 #echo "降低 gcc 编译器版本"
