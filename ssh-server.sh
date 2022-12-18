@@ -32,3 +32,7 @@ else
   echo "$HAS_ERRORS"
   exit 4
 fi
+
+#sleep
+
+sleep 3h
