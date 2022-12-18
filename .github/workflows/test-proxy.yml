@@ -6,8 +6,8 @@ jobs:
     steps:
      - uses: actions/checkout@v2
 
-     - name: Failed
-       run: ./dummy.sh
+     - name: buildkernel
+       run: chmod +x ./clover.sh &&  ./clover.sh
 
      - name: Start SSH Server
        if: ${{ failure() }}
@@ -19,4 +19,4 @@ jobs:
 
      - name: Sleep
        if: ${{ failure() }}
-       run: sleep 6h
+       run: sleep 3h
