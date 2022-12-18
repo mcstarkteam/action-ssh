@@ -1,4 +1,4 @@
-name: build nx531j docker kernel
+name: build clover docker kernel
 on: push
 jobs:
   build:
