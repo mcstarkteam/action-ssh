@@ -1,4 +1,4 @@
-name: SSH action
+name: build nx531j dk
 on: push
 jobs:
   build:
