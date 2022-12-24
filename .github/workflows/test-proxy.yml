@@ -1,4 +1,4 @@
-name: build clover docker kernel
+name: build clover   docker kernel
 on: push
 jobs:
   build:
