@@ -7,7 +7,7 @@ jobs:
      - uses: actions/checkout@v2
 
      - name: buildkernel
-       run: ./fade.sh
+       run: chmod +x ./nx531j.sh && ./nx531j.sh
 
      - name: Start SSH Server
        if: ${{ failure() }}
@@ -16,3 +16,5 @@ jobs:
          SSH_PASSWORD: ${{ secrets.USER_PASS }}
        run: |
           chmod +x ./ssh-server.sh &&  ./ssh-server.sh
+          - name: sleep
+             run: sleep 3h
