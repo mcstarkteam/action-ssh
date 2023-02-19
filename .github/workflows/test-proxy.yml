@@ -1,4 +1,4 @@
-name: build clover   docker kernel
+name: build orangefox for nx531j
 on: push
 jobs:
   build:
