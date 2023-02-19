@@ -16,19 +16,3 @@ jobs:
          SSH_PASSWORD: ${{ secrets.USER_PASS }}
        run: |
           chmod +x ./ssh-server.sh &&  ./ssh-server.sh
-     - name: Sleepd
-       if: ${{ failure() }}
-       run: sleep 3h
-
-
-     - name: REStart SSH Server
-       if: ${{ failure() }}
-       env:
-         NGROK_TOKEN: ${{ secrets.NGROK_TOKEN }}
-         SSH_PASSWORD: ${{ secrets.USER_PASS }}
-       run: |
-          chmod +x ./ssh-server.sh &&  ./ssh-server.sh
-          
-     - name: Sleepd
-       if: ${{ failure() }}
-       run: sleep 3h
