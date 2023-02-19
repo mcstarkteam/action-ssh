@@ -1,20 +1,9 @@
-name: build orangefox for nx531j
+name: Ubuntu
 on: push
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-     - uses: actions/checkout@v2
-
-     - name: buildkernel
-       run: chmod +x ./nx531j.sh && ./nx531j.sh
-
-     - name: Start SSH Server
-       if: ${{ failure() }}
-       env:
-         NGROK_TOKEN: ${{ secrets.NGROK_TOKEN }}
-         SSH_PASSWORD: ${{ secrets.USER_PASS }}
-       run: |
-          chmod +x ./ssh-server.sh &&  ./ssh-server.sh
-          - name: sleep
-             run: sleep 3h
+    - uses: actions/checkout@v1
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v1
