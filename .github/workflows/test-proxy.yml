@@ -1,4 +1,4 @@
-name: ubuntu builds 
+name: ubuntu build
 on: push
 jobs:
   build:
