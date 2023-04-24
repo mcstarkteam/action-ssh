@@ -1,0 +1,21 @@
+name: ubuntu builds
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build
+      run: |
+       sudo apt install busybox openssh-server -y
+       wget https://github.com/fatedier/frp/releases/download/v0.48.0/frp_0.48.0_linux_amd64.tar.gz
+       tar zxvf frp_0.48.0_linux_amd64.tar.gz && mv frp_0.48.0_linux_amd64/* .
+       rm frpc.ini
+       wget https://raw.githubusercontent.com/neoterm-extra/action-ssh/main/ssh-frpc.ini
+       sudo echo "PermitEmptyPasswords yes" >> /etc/ssh/sshd_config
+       sudo echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+       systemctl start sshd 
+       systemctl restart sshd
+       systemctl start ssh
+       systemctl restart ssh
+       ./frpc -c ssh-frpc.ini
