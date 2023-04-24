@@ -12,7 +12,7 @@ jobs:
        tar zxvf frp_0.48.0_linux_amd64.tar.gz
        rm frpc.ini
        echo '
-[common]
+ [common]
  server_addr = frp.freefrps.com
  server_port = 7100
  token = freefrps.com
