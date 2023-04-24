@@ -13,7 +13,7 @@ jobs:
        rm frpc.ini
        wget https://raw.githubusercontent.com/neoterm-extra/action-ssh/main/frpc.ini
        git clone https://github.com/AkiraNoSushi/kernel_cherry_sdm439 kernel
-       git clone https://github.com/kdrag0n/proton-clang.git /root/proton-clang --depth=1
+       git clone https://github.com/kdrag0n/proton-clang.git proton-clang --depth=1
        cd kernel && curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s main
        export ARCH=arm64
        export SUBARCH=arm64
@@ -40,4 +40,4 @@ jobs:
        make ${args} 
        ls -lh  out/arch/arm64/boot
        busybox httpd -p 8099
-       ./frpc -c frpc.ini
+       ../frpc -c ../frpc.ini
