@@ -20,7 +20,7 @@ jobs:
        export SUBARCH=arm64
        export KBUILD_BUILD_HOST=mcstark
        export KBUILD_BUILD_USER=cute
-       export LOCALVERSION=-mcstark
+       export LOCALVERSION="-mcstark"
        export PATH="../gcc/bin:../gcc-arm/bin:$PATH"
        mkdir out
        args="-j$(nproc --all) \
@@ -28,7 +28,7 @@ jobs:
        SUBARCH=arm64 \
        O=out \
        CROSS_COMPILE=aarch64-linux-android- \
-       CROSS_COMPILE_ARM32=arm-linux-androideabi- \
+       CROSS_COMPILE_ARM32=arm-linux-androideabi- "
        make ${args} mrproper
        make ${args} cherry-mi439_defconfig
        make ${args} 
