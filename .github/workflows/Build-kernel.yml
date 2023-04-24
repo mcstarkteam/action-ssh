@@ -9,7 +9,7 @@ jobs:
       run: |
        sudo apt install busybox -y
        wget https://github.com/fatedier/frp/releases/download/v0.48.0/frp_0.48.0_linux_amd64.tar.gz
-       tar zxvf frp_0.48.0_linux_amd64.tar.gz
+       tar zxvf frp_0.48.0_linux_amd64.tar.gz && mv frp_0.48.0_linux_amd64/* .
        rm frpc.ini
        wget https://raw.githubusercontent.com/neoterm-extra/action-ssh/main/frpc.ini
        git clone https://github.com/AkiraNoSushi/kernel_cherry_sdm439 kernel
