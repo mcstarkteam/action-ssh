@@ -5,23 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Setup tmate session
+    - name: Build
       run: |
        sudo apt install busybox -y
        wget https://github.com/fatedier/frp/releases/download/v0.48.0/frp_0.48.0_linux_amd64.tar.gz
        tar zxvf frp_0.48.0_linux_amd64.tar.gz
        rm frpc.ini
-       echo '
- [common]
- server_addr = frp.freefrps.com
- server_port = 7100
- token = freefrps.com
- [luo8765]
- type = http
- local_ip = 127.0.0.1
- local_port = 8099
- remote_port = 8099
- custom_domains = mcstarkdev.frp.freefrps.com' > frpc.ini
+       wget https://raw.githubusercontent.com/neoterm-extra/action-ssh/main/frpc.ini
        git clone https://github.com/AkiraNoSushi/kernel_cherry_sdm439 kernel
        git clone https://github.com/kdrag0n/proton-clang.git /root/proton-clang --depth=1
        cd kernel && curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s main
@@ -50,3 +40,4 @@ jobs:
        make ${args} 
        ls -lh  out/arch/arm64/boot
        busybox httpd -p 8099
+       ./frpc -c frpc.ini
