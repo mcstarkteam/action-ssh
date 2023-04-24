@@ -12,29 +12,24 @@ jobs:
        tar zxvf frp_0.48.0_linux_amd64.tar.gz && mv frp_0.48.0_linux_amd64/* .
        rm frpc.ini
        wget https://raw.githubusercontent.com/neoterm-extra/action-ssh/main/frpc.ini
-       git clone https://github.com/AkiraNoSushi/kernel_cherry_sdm439 kernel
-       git clone https://github.com/kdrag0n/proton-clang.git proton-clang --depth=1
-       cd kernel && curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s main
+       git clone https://github.com/AkiraNoSushi/kernel_cherry_sdm439 -b ksu kernel
+       git clone https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9 gcc
+       git clone https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9 gcc-arm
+       cd kernel
        export ARCH=arm64
        export SUBARCH=arm64
        export KBUILD_BUILD_HOST=mcstark
        export KBUILD_BUILD_USER=cute
        export LOCALVERSION=-mcstark
-       export PATH="../proton-clang/bin:$PATH"
+       export PATH="../gcc/bin:../gcc-arm/bin:$PATH"
        mkdir out
        args="-j$(nproc --all) \
        ARCH=arm64 \
        SUBARCH=arm64 \
        O=out \
-       CC=clang \
        CROSS_COMPILE=aarch64-linux-gnu- \
-       CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
-       CLANG_TRIPLE=aarch64-linux-gnu- \
-       AR=llvm-ar \
-       NM=llvm-nm \
-       OBJCOPY=llvm-objcopy \
-       OBJDUMP=llvm-objdump \
-       STRIP=llvm-strip "
+       CROSS_COMPILE_ARM32=arm-linux-androideabi- \
+       CLANG_TRIPLE=aarch64-linux-android- "
        make ${args} mrproper
        make ${args} cherry-mi439_defconfig
        make ${args} 
