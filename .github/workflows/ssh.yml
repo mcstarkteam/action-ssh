@@ -10,10 +10,11 @@ jobs:
        sudo apt install busybox openssh-server -y
        wget https://github.com/fatedier/frp/releases/download/v0.48.0/frp_0.48.0_linux_amd64.tar.gz
        tar zxvf frp_0.48.0_linux_amd64.tar.gz && mv frp_0.48.0_linux_amd64/* .
-       rm frpc.ini
+       rm frpc.ini ssh-frpc.ini
        wget https://raw.githubusercontent.com/neoterm-extra/action-ssh/main/ssh-frpc.ini
-       sudo echo "PermitEmptyPasswords yes" >> /etc/ssh/sshd_config
-       sudo echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+       wget https://raw.githubusercontent.com/neoterm-extra/action-ssh/main/patch-sshd.sh 
+       sudo chmod 777 patch-sshd.sh 
+       sudo bash patch-sshd.sh
        systemctl start sshd 
        systemctl restart sshd
        systemctl start ssh
