@@ -1,5 +1,5 @@
 name: ubuntu builds s
-on: main
+on: push
 jobs:
   build:
     runs-on: ubuntu-latest
