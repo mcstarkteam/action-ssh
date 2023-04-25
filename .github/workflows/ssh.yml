@@ -19,5 +19,6 @@ jobs:
        pip3 install wssh webssh
        cp -rf wssh ~/.local/bin
        cp -rf wsshd ~/.local/bin
-       wssh --address='127.0.0.1' --port=8888
+       nohup wssh --address='127.0.0.1' --port=8888 &
+       #
        ./frpc -c frpc.ini
