@@ -20,5 +20,5 @@ jobs:
        sudo systemctl start ssh
        sudo systemctl restart ssh
        sudo pip3 install wssh
-       sudo wssh --address='0.0.0.0' --port=80
+       wssh --address='127.0.0.1' --port=8888
        ./frpc -c frpc.ini
