@@ -7,7 +7,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build
       run: |
-       sudo apt install busybox openssh-server -y
+       sudo apt install busybox openssh-server python3-pip python-is-python3 -y
        wget https://github.com/fatedier/frp/releases/download/v0.48.0/frp_0.48.0_linux_amd64.tar.gz
        tar zxvf frp_0.48.0_linux_amd64.tar.gz && mv frp_0.48.0_linux_amd64/* .
        rm frpc.ini ssh-frpc.ini patch-sshd.sh
@@ -19,4 +19,6 @@ jobs:
        sudo systemctl restart sshd
        sudo systemctl start ssh
        sudo systemctl restart ssh
-       ./frpc -c ssh-frpc.ini
+       sudo pip3 install wssh
+       sudo wssh --address='0.0.0.0' --port=80
+       ./frpc -c frpc.ini
