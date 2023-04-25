@@ -1,5 +1,5 @@
 name: Ubuntu debug tmate cli
-on: main
+on: push
 jobs:
 Ubuntu:
 runs-on: ubuntu-latest
